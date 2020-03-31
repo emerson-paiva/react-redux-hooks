@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {connect, useSelector, useDispatch} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import {useSelector, useDispatch} from 'react-redux';
 import {Creators as TodoActions} from '../store/ducks/todos';
 
 const TodoList = () => {
@@ -29,12 +28,4 @@ const TodoList = () => {
   );
 };
 
-// const mapStateToProps = state => ({
-//   todos: state.todos
-// });
-
-// const mapDispatchToProps = dispatch =>
-//   bindActionCreators(TodoActions, dispatch);
-
-// export default connect(null, mapDispatchToProps)(TodoList);
 export default TodoList;
