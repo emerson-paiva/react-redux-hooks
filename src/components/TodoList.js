@@ -1,9 +1,11 @@
-import React, {useState, useEffect} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
-import {Creators as TodoActions} from '../store/ducks/todos';
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Creators as TodoActions } from "store/ducks/todos";
+
+import TodoItem from "components/TodoItem";
 
 const TodoList = () => {
-  const [todo, setTodo] = useState('');
+  const [todo, setTodo] = useState("");
   const todos = useSelector(state => state.todos);
   const dispatch = useDispatch();
 
@@ -15,15 +17,18 @@ const TodoList = () => {
     event.preventDefault();
 
     dispatch(TodoActions.addTodo(todo));
-    setTodo('');
+    setTodo("");
   };
 
   return (
     <section>
       <form onSubmit={handleSubmit}>
         <input onChange={event => setTodo(event.target.value)} value={todo} />
-        <button type='submit'>Novo</button>
+        <button type="submit">Novo</button>
       </form>
+      {todos?.map(({ text }) => (
+        <TodoItem text={text} />
+      ))}
     </section>
   );
 };
